@@ -12,6 +12,19 @@ const config: Config = {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
             },
+            fontFamily: {
+                sans: ["var(--font-montserrat)"],
+            },
+            // cursor: {
+            //     default:
+            //         "url(https://play.tailwindcss.com/favicons/favicon-16x16.png?v=3), default",
+            // },
+        },
+        colors: {
+            maincolor: "var(--maincolor)",
+            inputbg: "var(--inputbg)",
+            accent: "var(--accent)",
+            fadedText: "var(--faded-text)",
         },
     },
     plugins: [],

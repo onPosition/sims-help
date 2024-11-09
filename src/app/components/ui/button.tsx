@@ -2,12 +2,21 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    handleClick?: () => void;
+    text: string;
+}
 
-export default function Button({ className }: ButtonProps) {
+export default function Button({ className, handleClick, text }: ButtonProps) {
     return (
-        <button className={cn("bg-[#6246ea] p-3 px-5 rounded-md", className)}>
-            <b>Искать</b>
+        <button
+            className={cn(
+                "bg-maincolor text-[#fff] p-3 px-5 rounded-md font-bold hover:opacity-90",
+                className
+            )}
+            onClick={handleClick}
+        >
+            <span className="drop-shadow-md">{text}</span>
         </button>
     );
 }

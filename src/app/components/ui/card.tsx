@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,13 +14,19 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
         <Link
             href={slug}
             className={cn(
-                "bg-gray-200 p-2 rounded-xl flex my-8 items-center justify-center w-1/3 h-[200px]",
+                "bg-accent hover:bg-maincolor hover:text-white p-2 rounded-xl flex items-center justify-center gap-8 w-1/3 h-[200px]",
                 className
             )}
             scroll={false}
         >
+            <Image
+                src={"/" + slug.slice(1) + "_2.png"}
+                alt="bg"
+                width={75}
+                height={75}
+            />
             <div>
-                <p className="text-black">{title}</p>
+                <b>{title}</b>
             </div>
         </Link>
     );

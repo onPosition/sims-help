@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
+const montserrat = Montserrat({
+    subsets: ["cyrillic"],
+    display: "swap",
+    variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
     title: "Бот помощи Sims",
@@ -19,8 +19,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru">
-            <body>{children}</body>
+        <html lang="ru" className={montserrat.variable}>
+            <link rel="icon" href="/favicon.png" sizes="any" />
+            <body className="font-sans container max-w-[1100px] mx-auto cursor-simsdefault">
+                {children}
+            </body>
         </html>
     );
 }

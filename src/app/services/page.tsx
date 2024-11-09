@@ -1,14 +1,16 @@
 import React from "react";
+import Main from "../components/shared/content";
+import { Title } from "../components/ui/title";
 import Header from "../components/shared/header";
-import Main from "../components/shared/main";
 interface servicesProps {}
 
 export const services: React.FC<servicesProps> = () => {
     return (
-        <div className="container max-w-[1100px] mx-auto">
+        <>
             <Header activeCategory="services" />
-            <Main />
-        </div>
+            <Title text="Дополнительные услуги" size="2xl" />
+            <Main activeCategory="services" />
+        </>
     );
 };
 
