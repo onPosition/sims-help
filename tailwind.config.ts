@@ -25,6 +25,24 @@ const config: Config = {
             inputbg: "var(--inputbg)",
             accent: "var(--accent)",
             fadedText: "var(--faded-text)",
+            card: "var(--card)",
+            post: "var(--post)",
+        },
+        screens: {
+            sm: "380px",
+            // => @media (min-width: 640px) { ... }
+
+            md: "768px",
+            // => @media (min-width: 768px) { ... }
+
+            lg: "1024px",
+            // => @media (min-width: 1024px) { ... }
+
+            xl: "1280px",
+            // => @media (min-width: 1280px) { ... }
+
+            "2xl": "1536px",
+            // => @media (min-width: 1536px) { ... }
         },
     },
     plugins: [],

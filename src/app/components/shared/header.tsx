@@ -1,6 +1,4 @@
 import React from "react";
-import Input from "../ui/input";
-import Button from "../ui/button";
 import Card from "../ui/card";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,13 +13,13 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
     return (
         <header
             className="mb-16"
-            style={{
-                backgroundImage: `url('/bg.png')`,
-            }}
+            // style={{
+            //     backgroundImage: `url('/bg.png')`,
+            // }}
         >
             {/* Upper block: title, subtitle, search + tg-bot rounded image */}
-            <div className=" flex items-center  justify-center h-[400px]  b min-w-[680px]   ">
-                <section className="w-4/6 ">
+            <div className=" flex items-center flex-col-reverse lg:flex-row justify-center  ">
+                <section className="w-full lg:w-4/6 mb-8 lg:mb-0">
                     <h1 className="text-[3rem] font-bold font-sans leading-none pb-[2rem]">
                         <Link href="/">
                             {" "}
@@ -36,12 +34,12 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
                     </div>
                     <SearchInput
                         defaultValue={""}
-                        className="w-1/2"
+                        className="w-full lg:w-1/2"
                         showButton={true}
-                        category="website"
+                        category="blog"
                     />
                 </section>
-                <aside className="w-2/6 p-2 flex items-center justify-center aspect-square">
+                <aside className="w-full lg:w-2/6 p-2 flex items-center justify-center aspect-square">
                     <div className="size-full rounded-full  flex items-center justify-center">
                         <p>
                             <Image
@@ -55,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
                 </aside>
             </div>
             {/* Categories cards container*/}
-            <section className="flex items-center justify-center gap-4">
+            <section className="flex flex-row items-center justify-center gap-4">
                 <Card
                     title="Блог"
                     slug="/blog"

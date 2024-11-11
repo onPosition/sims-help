@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 interface CardProps {
-    className?: string | {};
+    className?: string;
     title: string;
     slug: string;
 }
@@ -14,7 +14,7 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
         <Link
             href={slug}
             className={cn(
-                "bg-accent hover:bg-maincolor hover:text-white p-2 rounded-xl flex items-center justify-center gap-8 w-1/3 h-[200px]",
+                "bg-accent hover:bg-maincolor hover:text-white p-2 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-2 lg:gap-8 w-full lg:w-1/3 h-[100px] lg:h-[200px]",
                 className
             )}
             scroll={false}
@@ -22,8 +22,10 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
             <Image
                 src={"/" + slug.slice(1) + "_2.png"}
                 alt="bg"
-                width={75}
-                height={75}
+                width={0}
+                height={0}
+                sizes="100%"
+                className="w-10 lg:w-20 h-10 lg:h-20"
             />
             <div>
                 <b>{title}</b>

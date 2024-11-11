@@ -1,8 +1,6 @@
 import React from "react";
 
-interface InputProps {}
-
-export const Input: React.FC<InputProps> = () => {
+export const Input: React.FC = () => {
     return (
         <input
             placeholder="Поиск по блогу"

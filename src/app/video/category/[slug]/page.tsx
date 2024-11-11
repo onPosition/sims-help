@@ -9,14 +9,17 @@ import { Title } from "@/app/components/ui/title";
 //     }));
 // }
 
-type BlogPostProps = {
-    params: { slug: string };
-};
-
-export default async function Page({ params }: BlogPostProps) {
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const slug = (await params).slug;
     return (
         <>
-            <Content activeCategory="video" blogCategory={params.slug} />
+            <Title text={"Видео туториалы"} size="2xl" />
+
+            <Content activeCategory="video" blogCategory={slug} />
         </>
     );
 }

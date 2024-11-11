@@ -1,22 +1,11 @@
 import Content from "@/app/components/shared/content";
-import { Title } from "@/app/components/ui/title";
+import { Params } from "../../../../../types/types";
 
-// export async function generateStaticParams() {
-//     const posts = await getContent("posts");
-
-//     return posts.data.map((post: { id: any }) => ({
-//         id: post.id.toString(),
-//     }));
-// }
-
-type BlogPostProps = {
-    params: { slug: string };
-};
-
-export default async function Page({ params }: BlogPostProps) {
+export default async function Page(props: { params: Params }) {
+    const slug = (await props.params).slug;
     return (
         <>
-            <Content activeCategory="posts" blogCategory={params.slug} />
+            <Content activeCategory="posts" blogCategory={slug} />
         </>
     );
 }

@@ -6,9 +6,11 @@
  * @return {Promise<object>} The fetched data.
  */
 
+// import { Article, Video } from "../../types/types";
+
 interface StrapiData {
     id: number;
-    [key: string]: any; // Allow for any additional fields
+    [key: string]: unknown; // Allow for any additional fields
 }
 
 interface StrapiResponse {
@@ -24,7 +26,7 @@ export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
     }
     return null;
 }
-let token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 export default async function fetchContentType(
     contentType: string,
     params: string,

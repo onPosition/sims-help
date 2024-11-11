@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
+/* h1 {
     @apply text-4xl mb-4;
 }
 
@@ -24,7 +24,7 @@ h5 {
 
 h6 {
     @apply text-base mb-2;
-}
+} */
 
 p {
     /* @apply mb-4; */
@@ -41,25 +41,35 @@ blockquote {
 :root {
     --background: #ffffff;
     --foreground: #f2f2f2;
-    --maincolor: #9eeea7;
+    /* --maincolor: #9eeea7; */
+    --maincolor: #8461fb;
     --inputbg: #e8e8e8;
-    --accent: #fcfcfc;
+    --accent: #f8f8f8;
     --faded-text: #a0a0a0;
+    --text: #000000;
+    --card: #ffffff;
+    --post: #f2f2f2;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --background: #f6f6f6;
-        --background: #ffffff;
+        --background: #2e2e2e; /* Темный фон */
+        --foreground: #e1e1e1; /* Светлый цвет текста */
+        --maincolor: #8461fb; /* Смягченный основной цвет */
+        --inputbg: #444444; /* Темный фон для полей ввода */
+        --accent: #383838; /* Акцентные элементы — темный оттенок */
+        --faded-text: #8c8c8c; /* Ослабленный текст */
+        --text: #ffffff;
+        --card: #393838;
+        --post: #393838;
     }
 }
 
 body {
-    color: var(--foreground);
-    color: black;
+    color: var(--text);
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 input:active {

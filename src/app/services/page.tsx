@@ -2,9 +2,8 @@ import React from "react";
 import Main from "../components/shared/content";
 import { Title } from "../components/ui/title";
 import Header from "../components/shared/header";
-interface servicesProps {}
 
-export const services: React.FC<servicesProps> = () => {
+const services: React.FC = () => {
     return (
         <>
             <Header activeCategory="services" />

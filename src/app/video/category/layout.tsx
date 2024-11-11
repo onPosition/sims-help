@@ -1,11 +1,10 @@
 import Header from "../../components/shared/header";
 
-type BlogLayoutProps = {
+export default function ArticlesLayout({
+    children,
+}: {
     children: React.ReactNode;
-    params: { slug: string };
-};
-
-export default function ArticlesLayout({ children, params }: BlogLayoutProps) {
+}) {
     return (
         <div>
             {<Header activeCategory="video" />}

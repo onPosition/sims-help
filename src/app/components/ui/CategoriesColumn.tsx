@@ -2,18 +2,21 @@ import fetchContentType from "@/lib/fetchContentType";
 import React from "react";
 import { Category } from "../../../../types/types";
 import Link from "next/link";
-import { useActivePath } from "@/lib/useActivePath";
 
 interface CategoriesColumnProps {
     category: string;
+    activeCategory?: string;
 }
 
-export async function CategoriesColumn({ category }: CategoriesColumnProps) {
+export async function CategoriesColumn({
+    category,
+    activeCategory,
+}: CategoriesColumnProps) {
     const categories = await fetchContentType(`${category}-categories`, "");
 
-    console.log(category);
+    console.log(activeCategory);
     return (
-        <div className="w-1/4">
+        <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
             <ul>
                 {categories.data.map((cat: Category) => (
                     <li key={cat.id}>
@@ -21,12 +24,24 @@ export async function CategoriesColumn({ category }: CategoriesColumnProps) {
                             href={`/${
                                 category === "posts" ? "blog" : "video"
                             }/category/${cat.slug}`}
-                            className="before:content-['—'] before:mr-4 hover:text-maincolor"
+                            className={
+                                activeCategory === cat.slug
+                                    ? "text-maincolor before:content-['—'] before:mr-4 hover:text-maincolor font-bold"
+                                    : "before:content-['—'] before:mr-4 hover:text-maincolor font-bold"
+                            }
                         >
                             {cat.CategoryName}
                         </Link>
                     </li>
                 ))}
+                <li>
+                    <Link
+                        href={`/${category === "posts" ? "blog" : "video"}`}
+                        className="before:content-['—'] before:mr-4 hover:text-maincolor font-bold"
+                    >
+                        Все категории
+                    </Link>{" "}
+                </li>
             </ul>
         </div>
     );

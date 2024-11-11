@@ -4,9 +4,7 @@ import { ArticlesRow } from "./components/ui/articles-row";
 import Button from "./components/ui/button";
 import Link from "next/link";
 
-interface pageProps {}
-
-export const page: React.FC<pageProps> = () => {
+const page: React.FC = () => {
     return (
         <div>
             <Header activeCategory="" />
@@ -15,12 +13,9 @@ export const page: React.FC<pageProps> = () => {
                 categorySlug="obshhie-voprosy"
                 title="Последние статьи"
             />
-            <ArticlesRow
-                categorySlug="cc-i-mody"
-                title="Самые популярные статьи"
-            />
+            <ArticlesRow categorySlug="cc-i-mody" title="Популярные статьи" />
             <div className="flex justify-center mb-16">
-                <Link href={"/blog"}>
+                <Link href={"/blog#posts"}>
                     <Button text="Показать все" disabled={true} />
                 </Link>
             </div>

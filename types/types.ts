@@ -23,6 +23,8 @@ export interface Article {
     id: string;
     text: [];
     posts_categories: Category[];
+    youtube_id: string;
+    title: string;
 }
 
 export interface Video {
@@ -42,3 +44,5 @@ export interface Service {
     id: string;
     createdAt: string;
 }
+
+export type Params = Promise<{ slug: string }>;

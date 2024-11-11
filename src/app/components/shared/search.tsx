@@ -19,9 +19,9 @@ export const SearchInput = ({
 }: iDefault) => {
     const router = useRouter();
     const [inputValue, setValue] = useState(defaultValue);
-    const searchCategories: any = {
+    const searchCategories: { [key: string]: string } = {
         blog: "блогу",
-        video: "видео",
+        videos: "видео",
         website: "сайту",
     };
 
@@ -33,16 +33,16 @@ export const SearchInput = ({
 
     const handleSearch = () => {
         if (inputValue && category === "blog")
-            return router.push(`search/?q=${inputValue}&category=posts`);
-        if (inputValue && category === "video")
-            return router.push(`search/?q=${inputValue}&category=video`);
+            return router.push(`/search/?q=${inputValue}&category=posts`);
+        if (inputValue && category === "videos")
+            return router.push(`/search/?q=${inputValue}&category=videos`);
         if (inputValue && category === "website")
             return router.push(`search/?q=${inputValue}&category=all`);
 
         if (!inputValue) return;
     };
 
-    const handleKeyPress = (event: { key: any }) => {
+    const handleKeyPress = (event: { key: string }) => {
         if (event.key === "Enter") return handleSearch();
     };
 
@@ -52,7 +52,7 @@ export const SearchInput = ({
         <div className="flex gap-1">
             <div
                 className={cn(
-                    "bg-accent flex flex-row items-center gap-1 p-1 pl-5 rounded-[15px]",
+                    "bg-accent flex flex-row items-center gap-1 p-1 pl-5 rounded-xl",
                     className
                 )}
             >

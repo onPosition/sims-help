@@ -1,27 +1,47 @@
 import Link from "next/link";
-import { Article, Video } from "../../../../types/types";
+import { Article } from "../../../../types/types";
 import PostCard from "./postCard";
-import { Title } from "./title";
+import { getYoutubeCover } from "@/lib/getYoutubeCover";
 
-export default function SearchResults({ posts, searchCategory }: any) {
+export default function SearchResults({
+    posts,
+    searchCategory,
+}: {
+    posts: { data: Article[] };
+    searchCategory: string;
+}) {
     return (
         <>
             <div className="flex mt-8">
-                <div className="grid-cols-3 w-3/4 grid gap-4">
-                    {posts.data.map((post: Article) => (
-                        <Link
-                            href={`/${searchCategory}/${post.slug}`}
-                            className=""
-                        >
-                            <PostCard
-                                title={post.Title}
-                                cover={post.Cover.url}
-                                key={post.id}
-                                date={post.createdAt}
-                                views={0}
-                            />
-                        </Link>
-                    ))}
+                <div className="grid-cols-1 lg:grid-cols-3 w-full grid gap-4">
+                    {searchCategory === "posts" &&
+                        posts.data.map((post: Article) => (
+                            <Link href={`/blog/${post.slug}`} key={post.id}>
+                                {
+                                    <PostCard
+                                        title={post.Title}
+                                        cover={post.Cover.url}
+                                        key={post.id}
+                                        date={post.createdAt}
+                                        views={0}
+                                    />
+                                }
+                            </Link>
+                        ))}
+                    {searchCategory === "videos" &&
+                        posts.data.map((post: Article) => (
+                            <Link href={`/video/${post.slug}`} key={post.id}>
+                                {
+                                    <PostCard
+                                        title={post.title}
+                                        cover={getYoutubeCover(post.youtube_id)}
+                                        key={post.id}
+                                        date={post.createdAt}
+                                        views={0}
+                                    />
+                                }
+                            </Link>
+                        ))}
                 </div>
             </div>
         </>
