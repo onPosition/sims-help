@@ -4,6 +4,7 @@ import fetchContentType from "@/lib/fetchContentType";
 import { Video } from "../../../../types/types";
 import { readableDate } from "@/lib/readableDate";
 import Link from "next/link";
+import splitYoutubeUrl from "@/lib/splitYoutubeId";
 
 export default async function Page({
     params,
@@ -16,6 +17,9 @@ export default async function Page({
         `filters[slug]=${slug}&populate=*`,
         true
     );
+    const { videoId, timecodeInt } = splitYoutubeUrl(video.youtube_id);
+    console.log(videoId);
+    console.log(timecodeInt);
 
     return (
         <>
@@ -40,7 +44,7 @@ export default async function Page({
                         itemType="text/html"
                         width="640"
                         height="390"
-                        src={`https://www.youtube.com/embed/${video.youtube_id}?enablejsapi=1`}
+                        src={`https://www.youtube.com/embed/${videoId}?start=${timecodeInt}&enablejsapi=1`}
                     ></iframe>
                 </div>
             </div>

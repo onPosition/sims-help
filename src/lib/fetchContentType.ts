@@ -40,11 +40,14 @@ export default async function fetchContentType(
         );
 
         // Perform the fetch request with the provided query parameters
-        const response = await fetch(`${url.href}?${params}`, {
-            method: "GET",
-            cache: "no-store",
-            headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await fetch(
+            `${url.href}?${params}&pagination[pageSize]=50`,
+            {
+                method: "GET",
+                cache: "force-cache",
+                headers: { Authorization: `Bearer ${token}` },
+            }
+        );
 
         if (!response.ok) {
             throw new Error(

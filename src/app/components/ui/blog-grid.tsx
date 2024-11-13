@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Article } from "../../../../types/types";
 import CategoriesColumn from "./CategoriesColumn";
 import PostCard from "./postCard";
-import { Title } from "./title";
 
 export default function BlogGrid({
     posts,
@@ -11,9 +10,9 @@ export default function BlogGrid({
     posts: { data: Article[] };
     blogCategory?: string;
 }) {
+    console.log("Мы находимся в BlogGrid");
     return (
         <>
-            <Title text={"Категории"} size="2xl" />
             <div className="flex flex-col lg:flex-row mt-8">
                 <CategoriesColumn
                     category="posts"
@@ -33,11 +32,19 @@ export default function BlogGrid({
                                     key={post.id}
                                     date={post.createdAt}
                                     views={0}
+                                    type="post"
                                 />
                             </Link>
                         ))}
                 </div>
             </div>
+            <p className="text-fadedText w-full text-center mt-8">
+                {"Видео в этой категории: " +
+                    posts.data.filter(
+                        (post: Article) =>
+                            post.posts_categories[0].slug === blogCategory
+                    ).length}
+            </p>
         </>
     );
 }

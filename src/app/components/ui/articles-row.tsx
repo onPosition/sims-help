@@ -5,15 +5,29 @@ import { Title } from "./title";
 import Link from "next/link";
 
 interface ArticlesRowProps {
-    categorySlug: string;
+    categorySlug?: string;
     title: string;
+    sortBy?: string;
 }
 
-export async function ArticlesRow({ categorySlug, title }: ArticlesRowProps) {
-    const posts = await fetchContentType(
-        "posts",
-        `filters[posts_categories][slug][$eq]=${categorySlug}&populate=*`
-    );
+export async function ArticlesRow({
+    categorySlug,
+    title,
+    sortBy,
+}: ArticlesRowProps) {
+    let posts = null;
+    if (categorySlug) {
+        posts = await fetchContentType(
+            "posts",
+            `filters[posts_categories][slug][$eq]=${categorySlug}&populate=*`
+        );
+    }
+    if (sortBy) {
+        posts = await fetchContentType(
+            "posts",
+            `sort[0]=${sortBy}:desc&populate=*`
+        );
+    }
     console.log("Посты на глагне " + posts);
     console.log(posts);
     return (
@@ -32,6 +46,7 @@ export async function ArticlesRow({ categorySlug, title }: ArticlesRowProps) {
                             cover={article.Cover.url}
                             date={article.createdAt}
                             views={0}
+                            type="post"
                         />
                     </Link>
                 ))}

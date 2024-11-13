@@ -9,11 +9,11 @@ const page: React.FC = () => {
         <div>
             <Header activeCategory="" />
             <Main />
+            <ArticlesRow title="Последние статьи" sortBy="updatedAt" />
             <ArticlesRow
                 categorySlug="obshhie-voprosy"
-                title="Последние статьи"
+                title="Популярные статьи"
             />
-            <ArticlesRow categorySlug="cc-i-mody" title="Популярные статьи" />
             <div className="flex justify-center mb-16">
                 <Link href={"/blog#posts"}>
                     <Button text="Показать все" disabled={true} />

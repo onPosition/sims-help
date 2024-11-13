@@ -6,10 +6,12 @@ import { Article, Service, Video } from "../../../../types/types";
 import { getYoutubeCover } from "@/lib/getYoutubeCover";
 import CategoriesColumn from "../ui/CategoriesColumn";
 import BlogGrid from "../ui/blog-grid";
+import VideoGrid from "../ui/video-grid";
 
 interface ContentProps {
     activeCategory?: string;
     blogCategory?: string;
+    videoCategory?: string;
 }
 
 async function getPosts() {
@@ -32,26 +34,37 @@ export default async function Content({
     const posts = await getPosts();
     const videos = await getVideos();
     const services = await getServices();
+    console.log("blogCategory: " + blogCategory);
+    console.log("activeCategory: " + activeCategory);
     if (activeCategory === "posts" && blogCategory) {
         return <BlogGrid posts={posts} blogCategory={blogCategory} />;
     }
+    if (activeCategory === "video" && blogCategory) {
+        return <VideoGrid videos={videos} videoCategory={blogCategory} />;
+    }
     if (activeCategory === "posts") {
         return (
-            <div className="flex flex-col lg:flex-row mt-8">
-                <CategoriesColumn category="posts" />
-                <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
-                    {posts.data.map((post: Article) => (
-                        <Link href={`/blog/${post.slug}`} key={post.id}>
-                            <PostCard
-                                title={post.Title}
-                                cover={post.Cover.url}
-                                date={post.createdAt}
-                                views={0}
-                            />
-                        </Link>
-                    ))}
+            <>
+                <div className="flex flex-col lg:flex-row mt-8">
+                    <CategoriesColumn category="posts" />
+                    <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
+                        {posts.data.map((post: Article) => (
+                            <Link href={`/blog/${post.slug}`} key={post.id}>
+                                <PostCard
+                                    title={post.Title}
+                                    cover={post.Cover.url}
+                                    date={post.createdAt}
+                                    views={0}
+                                    type="post"
+                                />
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </div>
+                <p className="text-fadedText w-full text-center mt-8">
+                    {"Всего постов: " + posts.data.length}
+                </p>
+            </>
         );
     }
 
@@ -78,6 +91,9 @@ export default async function Content({
                         ))}
                     </div>
                 </div>
+                <p className="text-fadedText w-full text-center mt-8">
+                    {"Всего видео: " + videos.data.length}
+                </p>
             </>
         );
     }

@@ -1,3 +1,4 @@
 export function getYoutubeCover(id: string) {
-    return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    const cleanId = id.split("&")[0];
+    return `https://img.youtube.com/vi/${cleanId}/hqdefault.jpg`;
 }

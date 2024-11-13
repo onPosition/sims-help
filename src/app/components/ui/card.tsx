@@ -20,12 +20,12 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
             scroll={false}
         >
             <Image
-                src={"/" + slug.slice(1) + "_2.png"}
+                src={"/" + slug.slice(1) + "_3.png"}
                 alt="bg"
                 width={0}
                 height={0}
                 sizes="100%"
-                className="w-10 lg:w-20 h-10 lg:h-20"
+                className="w-10 lg:w-16 h-10 lg:h-16"
             />
             <div>
                 <b>{title}</b>

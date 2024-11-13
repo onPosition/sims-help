@@ -18,6 +18,16 @@ export async function CategoriesColumn({
     return (
         <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
             <ul>
+                <li>
+                    <Link
+                        href={`/${category === "posts" ? "blog" : "video"}`}
+                        className={`before:content-['—'] before:mr-4 hover:text-maincolor font-bold ${
+                            !activeCategory && "text-maincolor"
+                        }`}
+                    >
+                        Все категории
+                    </Link>{" "}
+                </li>
                 {categories.data.map((cat: Category) => (
                     <li key={cat.id}>
                         <Link
@@ -34,14 +44,6 @@ export async function CategoriesColumn({
                         </Link>
                     </li>
                 ))}
-                <li>
-                    <Link
-                        href={`/${category === "posts" ? "blog" : "video"}`}
-                        className="before:content-['—'] before:mr-4 hover:text-maincolor font-bold"
-                    >
-                        Все категории
-                    </Link>{" "}
-                </li>
             </ul>
         </div>
     );
