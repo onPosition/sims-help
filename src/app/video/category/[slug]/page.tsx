@@ -1,4 +1,5 @@
 import Content from "@/app/components/shared/content";
+import Header from "@/app/components/shared/header";
 
 // export async function generateStaticParams() {
 //     const posts = await getContent("posts");
@@ -16,6 +17,7 @@ export default async function Page({
     const slug = (await params).slug;
     return (
         <>
+            <Header activeCategory="video" />
             <Content activeCategory="video" blogCategory={slug} />
         </>
     );

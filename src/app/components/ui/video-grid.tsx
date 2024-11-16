@@ -28,7 +28,7 @@ export default function VideoGrid({
                     {videos.data
                         .filter(
                             (video: Video) =>
-                                video.video_categories[0].slug === videoCategory
+                                video.video_category[0].slug === videoCategory
                         )
                         .map((video: Video) => (
                             <Link href={`/video/${video.slug}`} key={video.id}>
@@ -36,7 +36,7 @@ export default function VideoGrid({
                                     title={video.title}
                                     cover={getYoutubeCover(video.youtube_id)}
                                     key={video.id}
-                                    date={video.createdAt}
+                                    date={video.updatedAt}
                                     views={0}
                                     type="video"
                                 />
@@ -48,7 +48,7 @@ export default function VideoGrid({
                 {"Видео в этой категории: " +
                     videos.data.filter(
                         (video: Video) =>
-                            video.video_categories[0].slug === videoCategory
+                            video.video_category[0].slug === videoCategory
                     ).length}
             </p>
         </>

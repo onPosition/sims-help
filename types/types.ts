@@ -1,6 +1,6 @@
 export interface Category {
     id: string;
-    CategoryName: string;
+    category_name: string;
     slug: string;
 }
 
@@ -10,7 +10,6 @@ export interface Image {
 }
 
 export interface Article {
-    Title: string;
     description: string;
     slug: string;
     content: string;
@@ -18,23 +17,24 @@ export interface Article {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    Cover: Image;
+    cover: Image;
     categories: Category[];
     id: string;
     text: [];
-    posts_categories: Category[];
+    post_category: Category[];
     youtube_id: string;
     title: string;
 }
 
 export interface Video {
-    video_categories: Category[];
+    video_category: Category[];
     title: string;
     youtube_id: string;
     slug: string;
     cover: string;
     id: string;
     createdAt: string;
+    updatedAt: string;
 }
 export interface Service {
     title: string;
@@ -43,6 +43,7 @@ export interface Service {
     text: [];
     id: string;
     createdAt: string;
+    updatedAt: string;
 }
 
 export type Params = Promise<{ slug: string }>;

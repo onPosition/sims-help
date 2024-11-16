@@ -21,7 +21,7 @@ export const Title: React.FC<Props> = ({ text, size = "sm", className }) => {
 
     const mapClassNameBySize = {
         xs: "text-[16px] ys-text",
-        sm: "text-[22px] ys-text",
+        sm: "text-[14px] lg:text-[22px] ys-text",
         md: "text-[20px] lg:text-[26px] ys-text",
         lg: "text-[32px] ys-display",
         xl: "text-[40px] ys-display",

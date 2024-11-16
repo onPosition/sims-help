@@ -2,9 +2,9 @@ import React from "react";
 import { Title } from "@/app/components/ui/title";
 import fetchContentType from "@/lib/fetchContentType";
 import { Video } from "../../../../types/types";
-import { readableDate } from "@/lib/readableDate";
 import Link from "next/link";
 import splitYoutubeUrl from "@/lib/splitYoutubeId";
+import PostMetadata from "@/app/components/ui/post-metadata";
 
 export default async function Page({
     params,
@@ -18,8 +18,6 @@ export default async function Page({
         true
     );
     const { videoId, timecodeInt } = splitYoutubeUrl(video.youtube_id);
-    console.log(videoId);
-    console.log(timecodeInt);
 
     return (
         <>
@@ -36,12 +34,14 @@ export default async function Page({
                     className="text-center my-8"
                 />
                 <div className="text-center mb-8 text-fadedText">
-                    <p>{readableDate(video.createdAt)} | 123 Просмотров</p>
+                    <PostMetadata date={video.createdAt} views={0} />
                 </div>
+
                 <div className="bg-post p-8 lg:p-16 flex justify-center rounded-3xl">
                     <iframe
                         id="player"
                         itemType="text/html"
+                        allow="autoplay"
                         width="640"
                         height="390"
                         src={`https://www.youtube.com/embed/${videoId}?start=${timecodeInt}&enablejsapi=1`}

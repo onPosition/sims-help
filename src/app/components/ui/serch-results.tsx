@@ -19,8 +19,8 @@ export default function SearchResults({
                             <Link href={`/blog/${post.slug}`} key={post.id}>
                                 {
                                     <PostCard
-                                        title={post.Title}
-                                        cover={post.Cover.url}
+                                        title={post.title}
+                                        cover={post.cover.url}
                                         key={post.id}
                                         date={post.createdAt}
                                         views={0}

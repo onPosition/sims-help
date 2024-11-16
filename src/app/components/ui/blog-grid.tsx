@@ -11,6 +11,7 @@ export default function BlogGrid({
     blogCategory?: string;
 }) {
     console.log("Мы находимся в BlogGrid");
+    console.log(posts);
     return (
         <>
             <div className="flex flex-col lg:flex-row mt-8">
@@ -22,15 +23,15 @@ export default function BlogGrid({
                     {posts.data
                         .filter(
                             (post: Article) =>
-                                post.posts_categories[0].slug === blogCategory
+                                post.post_category[0].slug === blogCategory
                         )
                         .map((post: Article) => (
                             <Link href={`/blog/${post.slug}`} key={post.id}>
                                 <PostCard
-                                    title={post.Title}
-                                    cover={post.Cover.url}
+                                    title={post.title}
+                                    cover={post.cover.url}
                                     key={post.id}
-                                    date={post.createdAt}
+                                    date={post.updatedAt}
                                     views={0}
                                     type="post"
                                 />
@@ -39,10 +40,10 @@ export default function BlogGrid({
                 </div>
             </div>
             <p className="text-fadedText w-full text-center mt-8">
-                {"Видео в этой категории: " +
+                {"Статей в этой категории: " +
                     posts.data.filter(
                         (post: Article) =>
-                            post.posts_categories[0].slug === blogCategory
+                            post.post_category[0].slug === blogCategory
                     ).length}
             </p>
         </>

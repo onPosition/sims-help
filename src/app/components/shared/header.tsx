@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
             {/* Categories cards container*/}
             <section className="flex flex-row items-center justify-center gap-4">
                 <Card
-                    title="Блог"
+                    title="Полезные Cтатьи"
                     slug="/blog"
                     className={
                         activeCategory === "articles"
@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
                     }
                 />
                 <Card
-                    title="Видео"
+                    title="Видео-Туториалы"
                     slug="/video"
                     className={
                         activeCategory === "video"
@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({ activeCategory }) => {
                     }
                 />
                 <Card
-                    title="Услуги"
+                    title="Услуги поддержки"
                     slug="/services"
                     className={
                         activeCategory === "services"

@@ -52,7 +52,7 @@ export const PostCard: React.FC<postCardProps> = ({
                 </div>
                 <p className="font-bold">{title}</p>
             </div>
-            <PostMetadata date={date} views={views} />
+            {type !== "service" && <PostMetadata date={date} views={views} />}
         </div>
     );
 };

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Title } from "./title";
 
 interface CardProps {
     className?: string;
@@ -14,7 +15,7 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
         <Link
             href={slug}
             className={cn(
-                "bg-accent hover:bg-maincolor hover:text-white p-2 rounded-xl flex flex-col lg:flex-row items-center justify-center gap-2 lg:gap-8 w-full lg:w-1/3 h-[100px] lg:h-[200px]",
+                "bg-accent hover:bg-maincolor hover:text-white  px-4 p-4 lg:px-8 lg:pt-8 lg:pb-4 rounded-xl flex flex-col items-center text-center lg:text-left justify-between lg:items-start gap-2 lg:gap-8 w-1/3 h-fit lg:h-[200px]",
                 className
             )}
             scroll={false}
@@ -28,7 +29,7 @@ export const Card: React.FC<CardProps> = ({ className, title, slug }) => {
                 className="w-10 lg:w-16 h-10 lg:h-16"
             />
             <div>
-                <b>{title}</b>
+                <Title text={title} size="sm" className="font-bold" />
             </div>
         </Link>
     );

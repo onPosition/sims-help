@@ -10,10 +10,7 @@ const page: React.FC = () => {
             <Header activeCategory="" />
             <Main />
             <ArticlesRow title="Последние статьи" sortBy="updatedAt" />
-            <ArticlesRow
-                categorySlug="obshhie-voprosy"
-                title="Популярные статьи"
-            />
+            <ArticlesRow filters="popular" title="Популярные статьи" />
             <div className="flex justify-center mb-16">
                 <Link href={"/blog#posts"}>
                     <Button text="Показать все" disabled={true} />

@@ -13,8 +13,8 @@ export async function CategoriesColumn({
     activeCategory,
 }: CategoriesColumnProps) {
     const categories = await fetchContentType(`${category}-categories`, "");
+    console.log(categories);
 
-    console.log(activeCategory);
     return (
         <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
             <ul>
@@ -40,7 +40,7 @@ export async function CategoriesColumn({
                                     : "before:content-['—'] before:mr-4 hover:text-maincolor font-bold"
                             }
                         >
-                            {cat.CategoryName}
+                            {cat.category_name}
                         </Link>
                     </li>
                 ))}

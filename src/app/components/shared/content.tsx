@@ -7,6 +7,8 @@ import { getYoutubeCover } from "@/lib/getYoutubeCover";
 import CategoriesColumn from "../ui/CategoriesColumn";
 import BlogGrid from "../ui/blog-grid";
 import VideoGrid from "../ui/video-grid";
+import { strapiImage } from "@/lib/strapiImage";
+import Image from "next/image";
 
 interface ContentProps {
     activeCategory?: string;
@@ -34,8 +36,8 @@ export default async function Content({
     const posts = await getPosts();
     const videos = await getVideos();
     const services = await getServices();
-    console.log("blogCategory: " + blogCategory);
-    console.log("activeCategory: " + activeCategory);
+
+    console.log(posts);
     if (activeCategory === "posts" && blogCategory) {
         return <BlogGrid posts={posts} blogCategory={blogCategory} />;
     }
@@ -51,9 +53,9 @@ export default async function Content({
                         {posts.data.map((post: Article) => (
                             <Link href={`/blog/${post.slug}`} key={post.id}>
                                 <PostCard
-                                    title={post.Title}
-                                    cover={post.Cover.url}
-                                    date={post.createdAt}
+                                    title={post.title}
+                                    cover={post.cover.url}
+                                    date={post.updatedAt}
                                     views={0}
                                     type="post"
                                 />
@@ -83,7 +85,7 @@ export default async function Content({
                                     title={video.title}
                                     cover={getYoutubeCover(video.youtube_id)}
                                     key={video.id}
-                                    date={video.createdAt}
+                                    date={video.updatedAt}
                                     views={0}
                                     type="video"
                                 />
@@ -101,18 +103,19 @@ export default async function Content({
     if (activeCategory === "services") {
         return (
             <div className="flex mt-8">
-                <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
+                <div className="grid grid-rows-auto lg:grid-cols-3  w-full gap-4">
                     {services.data.map((service: Service) => (
                         <Link
                             href={`/services/${service.slug}`}
                             key={service.id}
                         >
-                            <PostCard
-                                title={service.title}
-                                cover={service.cover.url}
-                                date={service.createdAt}
-                                views={0}
-                                type="service"
+                            <Image
+                                src={strapiImage(service.cover.url)}
+                                alt="bg"
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                className="w-full rounded-xl h-full object-cover scale-100 hover:scale-105 duration-300"
                             />
                         </Link>
                     ))}
@@ -120,4 +123,27 @@ export default async function Content({
             </div>
         );
     }
+    // ! OG
+    // if (activeCategory === "services") {
+    //     return (
+    //         <div className="flex mt-8">
+    //             <div className="grid-cols-1 lg:grid-cols-3 w-full grid gap-4">
+    //                 {services.data.map((service: Service) => (
+    //                     <Link
+    //                         href={`/services/${service.slug}`}
+    //                         key={service.id}
+    //                     >
+    //                         <PostCard
+    //                             title={service.title}
+    //                             cover={service.cover.url}
+    //                             date={service.updatedAt}
+    //                             views={0}
+    //                             type="service"
+    //                         />
+    //                     </Link>
+    //                 ))}
+    //             </div>
+    //         </div>
+    //     );
+    // }
 }

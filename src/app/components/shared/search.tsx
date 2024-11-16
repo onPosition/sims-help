@@ -49,7 +49,12 @@ export const SearchInput = ({
     const currentData = searchCategories[category];
 
     return (
-        <div className="flex gap-1 w-full lg:w-fit">
+        <div
+            className={cn(
+                "flex gap-1 w-full lg:w-fit",
+                showButton && "lg:w-full"
+            )}
+        >
             <div
                 className={cn(
                     "bg-accent w-full flex flex-row items-center gap-1 p-1 pl-5 rounded-xl",
