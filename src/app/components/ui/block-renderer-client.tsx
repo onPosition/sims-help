@@ -12,7 +12,8 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                 blocks={{
                     image: ({ image }) => {
                         const parts = image.url.split("1337");
-                        const trimmedUrl = parts[1];
+                        const trimmedUrl = "/uploads/" + parts[1];
+                        console.log(trimmedUrl);
                         return (
                             <>
                                 <Image
