@@ -1,18 +1,20 @@
-import React, { Suspense } from "react";
-import Main from "../components/shared/content";
+import React from "react";
 import { Title } from "../components/ui/title";
 import Header from "../components/shared/header";
+import { Metadata } from "next";
+import ServicesGrid from "../components/ui/services-grid";
 
-const services: React.FC = () => {
-    return (
-        <>
-            <Header activeCategory="services" />
-            <Title text="Дополнительные услуги" size="2xl" />
-            <Suspense fallback={<div className="flex justify-center w-full h-36">Loading...</div>}>
-            <Main activeCategory="services" />
-            </Suspense>
-        </>
-    );
+export const metadata: Metadata = {
+    title: "Услуги поддержки",
+    description: "Техническая поддержка, разбор папки mods",
 };
 
-export default services;
+export default function Services() {
+    return (
+        <>
+            <Header />
+            <Title size="2xl">Дополнительные услуги</Title>
+            <ServicesGrid />
+        </>
+    );
+}

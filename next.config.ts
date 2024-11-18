@@ -14,6 +14,12 @@ const nextConfig = {
                 port: "1337",
                 pathname: "/uploads/**",
             },
+            {
+                protocol: "http",
+                hostname: "api.sims4helper.ru",
+                port: "80",
+                pathname: "/uploads/**",
+            },
 
             {
                 protocol: "https",

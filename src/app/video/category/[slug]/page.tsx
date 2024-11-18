@@ -1,13 +1,5 @@
-import Content from "@/app/components/shared/content";
 import Header from "@/app/components/shared/header";
-
-// export async function generateStaticParams() {
-//     const posts = await getContent("posts");
-
-//     return posts.data.map((post: { id: any }) => ({
-//         id: post.id.toString(),
-//     }));
-// }
+import VideoGrid from "@/app/components/ui/video-grid";
 
 export default async function Page({
     params,
@@ -17,8 +9,8 @@ export default async function Page({
     const slug = (await params).slug;
     return (
         <>
-            <Header activeCategory="video" />
-            <Content activeCategory="video" blogCategory={slug} />
+            <Header />
+            <VideoGrid videoCategory={slug} />
         </>
     );
 }

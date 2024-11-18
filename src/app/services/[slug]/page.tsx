@@ -7,6 +7,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { strapiImage } from "@/lib/strapiImage";
 
+export async function generateMetadata({ params }) {
+    const slug = (await params).slug;
+    const service = await fetchContentType(
+        "services",
+        `filters[slug]=${slug}`,
+        true
+    );
+    return {
+        title: `${service.title} | Sims Blog`,
+    };
+}
+
 export default async function Page(props: { params: Params }) {
     const slug = (await props.params).slug;
 
@@ -25,11 +37,9 @@ export default async function Page(props: { params: Params }) {
                 >
                     {"< Назад"}
                 </Link>
-                <Title
-                    text={service.title}
-                    size="2xl"
-                    className="text-center my-8"
-                />
+                <Title size="2xl" className="text-center my-8">
+                    {service.title}
+                </Title>
                 <div className="bg-post mt-8 p-8 lg:p-16 rounded-3xl mb-16 post-article">
                     <Image
                         src={strapiImage(service.cover.url)}

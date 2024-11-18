@@ -41,8 +41,15 @@ export async function ArticlesRow({
     return (
         <section className="mb-16">
             <div className="flex justify-between items-center font-bold mb-4">
-                <Title size="md" text={title} />
-                <Link href={"/blog/"} className="hover:text-maincolor">
+                <Title size="md">{title}</Title>
+                <Link
+                    href={
+                        categorySlug
+                            ? `/blog/category/${categorySlug}`
+                            : "/blog/"
+                    }
+                    className="hover:text-maincolor"
+                >
                     {"Все Cтатьи >"}
                 </Link>
             </div>

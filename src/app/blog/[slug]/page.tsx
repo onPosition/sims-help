@@ -5,6 +5,7 @@ import { Article, Params } from "../../../../types/types";
 import Link from "next/link";
 import { ArticlesRow } from "@/app/components/ui/articles-row";
 import PostMetadata from "@/app/components/ui/post-metadata";
+// import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlockRendererClient from "@/app/components/ui/block-renderer-client";
 
 async function getPost({ params }: { params: Params }) {
@@ -25,12 +26,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }: { params: Params }) {
-    // const slug = (await params).slug;
-    // const article: Article = await fetchContentType(
-    //     "posts",
-    //     `filters[slug]=${slug}&populate=*`,
-    //     true
-    // );
     const article = await getPost({ params });
 
     return (
@@ -42,14 +37,13 @@ export default async function Page({ params }: { params: Params }) {
                 >
                     {"< Назад"}
                 </Link>
-                <Title
-                    text={article.title}
-                    size="2xl"
-                    className="text-center my-8"
-                />
+                <Title size="2xl" className="text-center my-8">
+                    {article.title}
+                </Title>
                 <PostMetadata date={article.createdAt} views={0} />
 
                 <div className="bg-post mt-8 p-8 lg:p-16 rounded-3xl mb-16 post-article">
+                    {/* <BlocksRenderer content={article.text} /> */}
                     <BlockRendererClient content={article.text} />
                 </div>
             </article>

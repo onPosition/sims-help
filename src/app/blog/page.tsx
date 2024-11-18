@@ -1,29 +1,26 @@
-import React, { Suspense } from "react";
-import Content from "../components/shared/content";
 import Header from "../components/shared/header";
 import { Title } from "../components/ui/title";
 import { SearchInput } from "../components/shared/search";
+import BlogGrid from "../components/ui/blog-grid";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Статьи по Sims",
+    description: "Техническая поддержка, разбор папки mods",
+};
 
 const Page = () => {
     return (
         <div>
-            <Header activeCategory="articles" />
+            <Header />
             <div
                 id="posts"
                 className="flex w-full flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center"
             >
-                <Title text="Статьи по Sims" size="2xl" />
+                <Title size="2xl">Статьи по Sims</Title>
                 <SearchInput defaultValue="" category="blog" />
             </div>
-            {/* <Suspense
-                fallback={
-                    <div className="flex justify-center w-full h-36">
-                        Загружаем...
-                    </div>
-                }
-            > */}
-            <Content activeCategory="posts" blogCategory="" />
-            {/* </Suspense> */}
+            <BlogGrid />
         </div>
     );
 };

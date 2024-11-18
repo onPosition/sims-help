@@ -30,7 +30,8 @@ const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 export default async function fetchContentType(
     contentType: string,
     params: string,
-    spreadData?: boolean
+    spreadData?: boolean,
+    count?: number
 ): Promise<any> {
     try {
         // Construct the full URL for the API request
@@ -41,7 +42,7 @@ export default async function fetchContentType(
 
         // Perform the fetch request with the provided query parameters
         const response = await fetch(
-            `${url.href}?${params}&pagination[pageSize]=10`,
+            `${url.href}?${params}&pagination[pageSize]=${count ? count : 10}`,
             {
                 method: "GET",
                 // cache: "force-cache",

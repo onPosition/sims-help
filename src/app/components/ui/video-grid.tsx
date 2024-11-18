@@ -3,20 +3,15 @@ import { Video } from "../../../../types/types";
 import CategoriesColumn from "./CategoriesColumn";
 import PostCard from "./postCard";
 import { getYoutubeCover } from "@/lib/getYoutubeCover";
+import fetchContentType from "@/lib/fetchContentType";
 
-export default function VideoGrid({
-    videos,
+export default async function VideoGrid({
     videoCategory,
 }: {
-    videos: { data: Video[] };
     videoCategory?: string;
 }) {
-    // console.log("Мы находимся в VideoGrid");
-    // console.log(
-    //     videos.data.forEach((video: Video) =>
-    //         console.log(video.video_categories[0])
-    //     )
-    // );
+    const videos = await fetchContentType("videos", "populate=*", false, 100);
+    console.log(videoCategory);
     return (
         <>
             <div className="flex flex-col lg:flex-row mt-8">
@@ -27,8 +22,11 @@ export default function VideoGrid({
                 <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
                     {videos.data
                         .filter(
-                            (video: Video) =>
-                                video.video_category[0].slug === videoCategory
+                            videoCategory
+                                ? (video: Video) =>
+                                      video.video_category[0].slug ===
+                                      videoCategory
+                                : () => true
                         )
                         .map((video: Video) => (
                             <Link href={`/video/${video.slug}`} key={video.id}>
@@ -44,13 +42,15 @@ export default function VideoGrid({
                         ))}
                 </div>
             </div>
-            <p className="text-fadedText w-full text-center mt-8">
-                {"Видео в этой категории: " +
-                    videos.data.filter(
-                        (video: Video) =>
-                            video.video_category[0].slug === videoCategory
-                    ).length}
-            </p>
+            {/* {videoCategory && (
+                <p className="text-fadedText w-full text-center mt-8">
+                    {"Видео в этой категории: " +
+                        videos.data.filter(
+                            (video: Video) =>
+                                video.video_category[0].slug === videoCategory
+                        ).length}
+                </p>
+            )} */}
         </>
     );
 }

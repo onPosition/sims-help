@@ -21,8 +21,8 @@ export default async function Page({
 
     return (
         <>
-            <Header activeCategory="" />
-            <Title text={`Результаты по запросу "${filters}"`} size="2xl" />
+            <Header />
+            <Title size="2xl">{`Результаты по запросу "${filters}"`}</Title>
             {searchCategory === "posts" && (
                 <SearchResults
                     posts={contentPosts}

@@ -1,22 +1,35 @@
 import React from "react";
 import { Title } from "@/app/components/ui/title";
 import fetchContentType from "@/lib/fetchContentType";
-import { Video } from "../../../../types/types";
+import { Params, Video } from "../../../../types/types";
 import Link from "next/link";
 import splitYoutubeUrl from "@/lib/splitYoutubeId";
 import PostMetadata from "@/app/components/ui/post-metadata";
 
-export default async function Page({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
+async function getVideo({ params }: { params: Params }) {
     const slug = (await params).slug;
     const video: Video = await fetchContentType(
         "videos",
         `filters[slug]=${slug}&populate=*`,
         true
     );
+    return video;
+}
+
+export async function generateMetadata({ params }) {
+    const video = await getVideo({ params });
+    return {
+        title: `${video.title} | Sims Blog`,
+    };
+}
+
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const video = await getVideo({ params });
+
     const { videoId, timecodeInt } = splitYoutubeUrl(video.youtube_id);
 
     return (
@@ -28,11 +41,9 @@ export default async function Page({
                 >
                     {"< Назад"}
                 </Link>
-                <Title
-                    text={video.title}
-                    size="2xl"
-                    className="text-center my-8"
-                />
+                <Title size="2xl" className="text-center my-8">
+                    {video.title}
+                </Title>
                 <div className="text-center mb-8 text-fadedText">
                     <PostMetadata date={video.createdAt} views={0} />
                 </div>

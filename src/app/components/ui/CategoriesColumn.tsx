@@ -13,7 +13,6 @@ export async function CategoriesColumn({
     activeCategory,
 }: CategoriesColumnProps) {
     const categories = await fetchContentType(`${category}-categories`, "");
-    console.log(categories);
 
     return (
         <div className="w-full lg:w-1/4 mb-8 lg:mb-0">

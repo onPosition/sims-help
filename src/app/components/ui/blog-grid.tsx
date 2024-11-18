@@ -2,16 +2,14 @@ import Link from "next/link";
 import { Article } from "../../../../types/types";
 import CategoriesColumn from "./CategoriesColumn";
 import PostCard from "./postCard";
+import fetchContentType from "@/lib/fetchContentType";
 
-export default function BlogGrid({
-    posts,
+export default async function BlogGrid({
     blogCategory,
 }: {
-    posts: { data: Article[] };
     blogCategory?: string;
 }) {
-    console.log("Мы находимся в BlogGrid");
-    console.log(posts);
+    const posts = await fetchContentType("posts", "populate=*", false, 100);
     return (
         <>
             <div className="flex flex-col lg:flex-row mt-8">
@@ -22,8 +20,11 @@ export default function BlogGrid({
                 <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
                     {posts.data
                         .filter(
-                            (post: Article) =>
-                                post.post_category[0].slug === blogCategory
+                            blogCategory
+                                ? (post: Article) =>
+                                      post.post_category[0].slug ===
+                                      blogCategory
+                                : () => true
                         )
                         .map((post: Article) => (
                             <Link href={`/blog/${post.slug}`} key={post.id}>
@@ -39,13 +40,15 @@ export default function BlogGrid({
                         ))}
                 </div>
             </div>
-            <p className="text-fadedText w-full text-center mt-8">
-                {"Статей в этой категории: " +
-                    posts.data.filter(
-                        (post: Article) =>
-                            post.post_category[0].slug === blogCategory
-                    ).length}
-            </p>
+            {/* {blogCategory && (
+                <p className="text-fadedText w-full text-center mt-8">
+                    {"Статей в этой категории: " +
+                        posts.data.filter(
+                            (post: Article) =>
+                                post.post_category[0].slug === blogCategory
+                        ).length}
+                </p>
+            )} */}
         </>
     );
 }

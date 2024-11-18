@@ -11,10 +11,12 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                 content={content}
                 blocks={{
                     image: ({ image }) => {
+                        const parts = image.url.split("1337");
+                        const trimmedUrl = parts[1];
                         return (
                             <>
                                 <Image
-                                    src={strapiImage(image.url)}
+                                    src={strapiImage(trimmedUrl)}
                                     width={image.width}
                                     height={image.height}
                                     alt={image.alternativeText || ""}
