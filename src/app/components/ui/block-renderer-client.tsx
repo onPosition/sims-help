@@ -1,5 +1,4 @@
 "use client";
-import { strapiImage } from "@/lib/strapiImage";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import React from "react";
