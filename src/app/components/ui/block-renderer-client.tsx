@@ -11,9 +11,8 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                 content={content}
                 blocks={{
                     image: ({ image }) => {
-                        const parts = image.url.split("1337");
+                        const parts = image.url.split("/uploads/");
                         const trimmedUrl = "/uploads/" + parts[1];
-                        console.log(trimmedUrl);
                         return (
                             <>
                                 <Image
@@ -22,6 +21,8 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                                     height={image.height}
                                     alt={image.alternativeText || ""}
                                     className={image.caption ? "mb-2" : "mb-8"}
+                                    decoding="sync"
+                                    sizes="(max-width: 768px) 100vw"
                                 />
                                 <p className="text-center mt text-fadedText">
                                     {image.caption}
