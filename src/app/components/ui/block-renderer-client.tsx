@@ -16,7 +16,7 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                         return (
                             <>
                                 <Image
-                                    src={strapiImage(trimmedUrl)}
+                                    src={`https://api.sims4helper.ru${trimmedUrl}`}
                                     width={image.width}
                                     height={image.height}
                                     alt={image.alternativeText || ""}

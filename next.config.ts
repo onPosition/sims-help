@@ -3,7 +3,7 @@ const nextConfig = {
         formats: ["image/avif", "image/webp"],
         remotePatterns: [
             {
-                protocol: "https",
+                protocol: "http",
                 hostname: "localhost",
                 port: "1337",
                 pathname: "/uploads/**",
