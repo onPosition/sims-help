@@ -21,8 +21,7 @@ export const BlockRendererClient = ({ content }: { content: any }) => {
                                     height={image.height}
                                     alt={image.alternativeText || ""}
                                     className={image.caption ? "mb-2" : "mb-8"}
-                                    decoding="sync"
-                                    sizes="(max-width: 768px) 100vw"
+                                    unoptimized={true}
                                 />
                                 <p className="text-center mt text-fadedText">
                                     {image.caption}
