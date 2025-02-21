@@ -60,21 +60,27 @@ ol {
     --accent: #f8f8f8;
     --faded-text: #a0a0a0;
     --text: #000000;
-    --card: #ffffff;
+    --card: #eeeeee;
     --post: #f2f2f2;
+    --bg-header: #ebe6e0;
+    --btn-primary: #465cea;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #2e2e2e; /* Темный фон */
-        --foreground: #e1e1e1; /* Светлый цвет текста */
-        --maincolor: #8461fb; /* Смягченный основной цвет */
-        --inputbg: #444444; /* Темный фон для полей ввода */
-        --accent: #383838; /* Акцентные элементы — темный оттенок */
-        --faded-text: #8c8c8c; /* Ослабленный текст */
+        --background: #211a1a;
+        --foreground: #e1e1e1;
+        --maincolor: #8461fb;
+        --inputbg: #444444;
+        --accent: #383838;
+        --faded-text: #8c8c8c;
         --text: #ffffff;
-        --card: #393838;
+        --card: #413c3c;
         --post: #393838;
+        --bg-header: #2c2626;
+    }
+    .dark-invert {
+        filter: invert(1);
     }
 }
 
@@ -85,7 +91,14 @@ body {
     scroll-behavior: smooth;
 }
 
+.font-montserrat-alternates {
+    font-family: "Montserrat Alternates";
+}
 input:active {
     outline: none;
     border: lightcyan;
+}
+
+.page-content {
+    margin: 0 auto;
 }

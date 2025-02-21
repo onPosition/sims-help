@@ -14,7 +14,7 @@ export default async function VideoGrid({
     console.log(videoCategory);
     return (
         <>
-            <div className="flex flex-col lg:flex-row mt-8">
+            <div className="max-w-[1200px] m-auto flex flex-col lg:flex-row mt-8">
                 <CategoriesColumn
                     category="video"
                     activeCategory={videoCategory}

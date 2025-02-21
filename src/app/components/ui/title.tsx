@@ -29,7 +29,7 @@ export const Title: React.FC<Props> = ({
         md: "text-[20px] lg:text-[26px] ys-text",
         lg: "text-[32px] ys-display",
         xl: "text-[40px] ys-display",
-        "2xl": "text-[32px] lg:text-[48px] ys-display",
+        "2xl": "text-[32px] lg:text-[48px] ys-display font-montserrat-alternates",
     } as const;
 
     return React.createElement(

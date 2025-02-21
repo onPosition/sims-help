@@ -13,7 +13,7 @@ export default function SearchResults({
     return (
         <>
             <div className="flex mt-8">
-                <div className="grid-cols-1 lg:grid-cols-3 w-full grid gap-4">
+                <div className="grid-cols-1 lg:grid-cols-4 w-full grid gap-4">
                     {searchCategory === "posts" &&
                         posts.data.map((post: Article) => (
                             <Link href={`/blog/${post.slug}`} key={post.id}>

@@ -42,7 +42,7 @@ export default async function fetchContentType(
 
         // Perform the fetch request with the provided query parameters
         const response = await fetch(
-            `${url.href}?${params}&pagination[pageSize]=${count ? count : 10}`,
+            `${url.href}?${params}&pagination[pageSize]=${count ? count : 25}`,
             {
                 method: "GET",
                 // cache: "force-cache",

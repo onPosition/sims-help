@@ -3,9 +3,9 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { Title } from "@/app/components/ui/title";
 import fetchContentType from "@/lib/fetchContentType";
 import { Params, Service } from "../../../../types/types";
-import Link from "next/link";
 import Image from "next/image";
 import { strapiImage } from "@/lib/strapiImage";
+import BackButton from "@/app/components/ui/back-button";
 
 export async function generateMetadata({ params }) {
     const slug = (await params).slug;
@@ -14,9 +14,12 @@ export async function generateMetadata({ params }) {
         `filters[slug]=${slug}`,
         true
     );
-    return {
-        title: `${service.title} | Sims Blog`,
-    };
+    if (service) {
+        return {
+            title: `${service.title} | Sims Blog`,
+        };
+    }
+    return;
 }
 
 export default async function Page(props: { params: Params }) {
@@ -27,16 +30,13 @@ export default async function Page(props: { params: Params }) {
         `filters[slug]=${slug}&populate=*`,
         true
     );
-
+    if (!service) {
+        return <h1>404</h1>;
+    }
     return (
         <>
             <div className="mt-16">
-                <Link
-                    href="/services"
-                    className="font-bold p-4 bg-maincolor rounded-xl"
-                >
-                    {"< Назад"}
-                </Link>
+                <BackButton />
                 <Title size="2xl" className="text-center my-8">
                     {service.title}
                 </Title>

@@ -29,7 +29,7 @@ export default function RootLayout({
                 //     backgroundImage: `url('/bg.png')`,
                 //     backgroundSize: "cover",
                 // }}
-                className="font-sans container max-w-[1100px] mx-auto px-4 lg:px-0"
+                className="font-sans w-full lg:px-0"
             >
                 {children}
                 <Footer />

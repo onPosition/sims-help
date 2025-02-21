@@ -27,6 +27,8 @@ const config: Config = {
             fadedText: "var(--faded-text)",
             card: "var(--card)",
             post: "var(--post)",
+            bgheader: "var(--bg-header)",
+            btnprimary: "var(--btn-primary)",
         },
         screens: {
             sm: "380px",

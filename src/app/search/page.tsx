@@ -22,7 +22,7 @@ export default async function Page({
     return (
         <>
             <Header />
-            <Title size="2xl">{`Результаты по запросу "${filters}"`}</Title>
+            <Title size="2xl">{`Результаты по запросу «${filters}»`}</Title>
             {searchCategory === "posts" && (
                 <SearchResults
                     posts={contentPosts}

@@ -15,9 +15,9 @@ export async function CategoriesColumn({
     const categories = await fetchContentType(`${category}-categories`, "");
 
     return (
-        <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
-            <ul>
-                <li>
+        <div className=" w-full lg:w-1/4 mb-8 lg:mb-0">
+            <ul className="flex flex-col">
+                <li style={{ order: 0 }}>
                     <Link
                         href={`/${category === "posts" ? "blog" : "video"}`}
                         className={`before:content-['—'] before:mr-4 hover:text-maincolor font-bold ${
@@ -28,7 +28,7 @@ export async function CategoriesColumn({
                     </Link>{" "}
                 </li>
                 {categories.data.map((cat: Category) => (
-                    <li key={cat.id}>
+                    <li key={cat.id} style={{ order: cat.order }}>
                         <Link
                             href={`/${
                                 category === "posts" ? "blog" : "video"

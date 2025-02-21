@@ -12,7 +12,7 @@ export default async function BlogGrid({
     const posts = await fetchContentType("posts", "populate=*", false, 100);
     return (
         <>
-            <div className="flex flex-col lg:flex-row mt-8">
+            <div className="flex max-w-[1200px] m-auto flex-col lg:flex-row mt-8">
                 <CategoriesColumn
                     category="posts"
                     activeCategory={blogCategory}

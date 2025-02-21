@@ -2,9 +2,9 @@ import React from "react";
 import { Title } from "@/app/components/ui/title";
 import fetchContentType from "@/lib/fetchContentType";
 import { Params, Video } from "../../../../types/types";
-import Link from "next/link";
 import splitYoutubeUrl from "@/lib/splitYoutubeId";
 import PostMetadata from "@/app/components/ui/post-metadata";
+import BackButton from "@/app/components/ui/back-button";
 
 async function getVideo({ params }: { params: Params }) {
     const slug = (await params).slug;
@@ -18,9 +18,12 @@ async function getVideo({ params }: { params: Params }) {
 
 export async function generateMetadata({ params }) {
     const video = await getVideo({ params });
-    return {
-        title: `${video.title} | Sims Blog`,
-    };
+    if (video) {
+        return {
+            title: `${video.title} | Sims Blog`,
+        };
+    }
+    return;
 }
 
 export default async function Page({
@@ -29,18 +32,15 @@ export default async function Page({
     params: Promise<{ slug: string }>;
 }) {
     const video = await getVideo({ params });
-
+    if (!video) {
+        return <h1>404</h1>;
+    }
     const { videoId, timecodeInt } = splitYoutubeUrl(video.youtube_id);
 
     return (
         <>
-            <div className="mt-16">
-                <Link
-                    href="/video"
-                    className="font-bold p-4 bg-maincolor rounded-xl"
-                >
-                    {"< Назад"}
-                </Link>
+            <div className=" max-w-[1200px] m-auto mt-16">
+                <BackButton />
                 <Title size="2xl" className="text-center my-8">
                     {video.title}
                 </Title>

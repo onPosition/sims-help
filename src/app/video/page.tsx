@@ -14,7 +14,7 @@ const videos: React.FC = () => {
     return (
         <div>
             <Header />
-            <div className="flex flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center">
+            <div className="flex flex-col max-w-[1200px] m-auto gap-2 lg:gap-0 lg:flex-row justify-between items-center">
                 <Title size="2xl">Видео туториалы</Title>
                 <SearchInput defaultValue="" category="videos" />
             </div>

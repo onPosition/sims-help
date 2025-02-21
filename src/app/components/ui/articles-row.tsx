@@ -10,6 +10,7 @@ interface ArticlesRowProps {
     sortBy?: string;
     filters?: string;
     id?: string;
+    relatedAtricles?: string[];
 }
 
 export async function ArticlesRow({
@@ -18,6 +19,7 @@ export async function ArticlesRow({
     sortBy,
     filters,
     id,
+    relatedAtricles,
 }: ArticlesRowProps) {
     let posts = null;
     if (categorySlug) {
@@ -33,10 +35,14 @@ export async function ArticlesRow({
         );
     }
     if (filters) {
-        posts = await fetchContentType(
-            "posts",
-            `filters[popular]=*&populate=*`
-        );
+        posts = await fetchContentType("posts", `filters[popular]&populate=*`);
+    }
+    if (relatedAtricles) {
+        const query = relatedAtricles
+            .map((slug) => `filters[slug][$in]=${encodeURIComponent(slug)}`)
+            .join("&");
+        const fullQuery = `${query}&populate=*`;
+        posts = await fetchContentType("posts", fullQuery);
     }
     return (
         <section className="mb-16">

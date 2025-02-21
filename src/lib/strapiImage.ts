@@ -2,6 +2,8 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export function strapiImage(url: string): string {
     noStore();
+
+    if (!url) return process.env.WEBSITE_URL + "/not-found.avif";
     if (url.startsWith("/")) {
         if (
             !process.env.NEXT_PUBLIC_API_URL &&

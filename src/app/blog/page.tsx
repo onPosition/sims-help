@@ -15,7 +15,7 @@ const Page = () => {
             <Header />
             <div
                 id="posts"
-                className="flex w-full flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center"
+                className="flex max-w-[1200px] m-auto flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center"
             >
                 <Title size="2xl">Статьи по Sims</Title>
                 <SearchInput defaultValue="" category="blog" />
