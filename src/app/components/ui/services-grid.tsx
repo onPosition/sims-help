@@ -8,7 +8,7 @@ export default async function ServicesGrid() {
     const services = await fetchContentType("services", "populate=*");
     console.log(services);
     return (
-        <div className="flex mt-8">
+        <div className="flex mt-8 max-w-[1200px] m-auto">
             <div className="grid grid-rows-auto lg:grid-cols-3  w-full gap-4">
                 {services.data.map((service: Service) => (
                     <Link href={`/services/${service.slug}`} key={service.id}>

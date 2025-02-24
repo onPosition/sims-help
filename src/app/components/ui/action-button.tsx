@@ -1,3 +1,5 @@
+import { strapiImage } from "@/lib/strapiImage";
+import Image from "next/image";
 import React from "react";
 
 interface ButtonProps {
@@ -24,7 +26,13 @@ const ActionButton: React.FC<ButtonProps> = ({
             className={`flex items-center gap-4 px-6 h-14 rounded-lg font-semibold transition ${types[type]}`}
             onClick={onClick}
         >
-            <img src={icon} className="w-7 h-auto" />
+            <Image
+                src={strapiImage(icon)}
+                className="w-7 h-auto"
+                alt="logo"
+                width={133}
+                height={50}
+            />
             {label}
         </button>
     );

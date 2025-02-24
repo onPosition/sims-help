@@ -38,7 +38,7 @@ export const Banner: React.FC<bannerProps> = ({ serviceSlug, text, image }) => {
             <a href={`/services/${serviceSlug}`} className="w-1/2 relative">
                 <img
                     src="/arrow.png"
-                    className="absolute bottom-20 -left-44 pointer-events-none rotate-[24deg]"
+                    className="absolute bottom-0 -left-36 pointer-events-none w-24 mirrored"
                 />
                 <Image
                     src={strapiImage(image)}

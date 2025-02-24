@@ -2,6 +2,7 @@ import fetchContentType from "@/lib/fetchContentType";
 import { FooterData, NavigationItem } from "../../../../types/types";
 import { strapiImage } from "@/lib/strapiImage";
 import ActionButton from "../ui/action-button";
+import Image from "next/image";
 
 async function getFooterData() {
     const footerData: FooterData = await fetchContentType(
@@ -18,14 +19,18 @@ export function Footer() {
     return (
         <div
             className="bg-bgheader mt-16 py-8 flex flex-col items-center justify-center font-semibold"
-            style={{ backgroundImage: "url('/dots 1.png')" }}
+            style={{ backgroundImage: "url('/dots black 20.png')" }}
         >
             {/* Top section - logo, nav, buttons */}
             <div className="w-[1200px] border-[#BEB7AE] border-b-[1px] py-8 flex items-start justify-between">
-                <img
+                <Image
                     src={strapiImage(footerData.footer.logo.url)}
                     className="w-[133px] dark-invert"
+                    alt="logo"
+                    width={133}
+                    height={50}
                 />
+
                 {footerData.navigation.navigation_items.map(
                     (nav_item: NavigationItem) => (
                         <a href={`/${nav_item.slug}`} key={nav_item.id}>

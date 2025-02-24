@@ -27,9 +27,12 @@ export default function Header({ navOnly = false }) {
         return (
             <nav className="max-w-[1200px] m-auto flex justify-between">
                 <Link href={"/"}>
-                    <img
+                    <Image
                         src={strapiImage(globalData.footer.logo.url)}
                         className="w-[133px] dark-invert"
+                        alt="logo"
+                        width={133}
+                        height={50}
                     />
                 </Link>
                 <div className="flex items-center gap-10 py-8">

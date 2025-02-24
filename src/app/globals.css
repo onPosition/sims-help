@@ -55,7 +55,7 @@ ol {
     --background: #ffffff;
     --foreground: #f2f2f2;
     /* --maincolor: #9eeea7; */
-    --maincolor: #8461fb;
+    --maincolor: #4b46ea;
     --inputbg: #e8e8e8;
     --accent: #f8f8f8;
     --faded-text: #a0a0a0;
@@ -63,14 +63,13 @@ ol {
     --card: #eeeeee;
     --post: #f2f2f2;
     --bg-header: #ebe6e0;
-    --btn-primary: #465cea;
+    --btn-primary: #4b46ea;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #211a1a;
         --foreground: #e1e1e1;
-        --maincolor: #8461fb;
         --inputbg: #444444;
         --accent: #383838;
         --faded-text: #8c8c8c;
@@ -101,4 +100,7 @@ input:active {
 
 .page-content {
     margin: 0 auto;
+}
+.mirrored {
+    transform: scaleX(-1) rotate(90deg);
 }
