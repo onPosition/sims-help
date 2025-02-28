@@ -9,10 +9,15 @@ export default async function BlogGrid({
 }: {
     blogCategory?: string;
 }) {
-    const posts = await fetchContentType("posts", "populate=*", false, 100);
+    const posts = await fetchContentType(
+        "posts",
+        "sort[0]=popularity:desc&populate=*",
+        false,
+        100
+    );
     return (
         <>
-            <div className="flex max-w-[1200px] m-auto flex-col lg:flex-row mt-8">
+            <div className="flex max-w-[1300px] m-auto flex-col lg:flex-row mt-8 px-4 lg:px-0">
                 <CategoriesColumn
                     category="posts"
                     activeCategory={blogCategory}

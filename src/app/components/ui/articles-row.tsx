@@ -45,7 +45,7 @@ export async function ArticlesRow({
         posts = await fetchContentType("posts", fullQuery);
     }
     return (
-        <section className="mb-16">
+        <section className="mb-16 px-4 lg:px-0">
             <div className="flex justify-between items-center font-bold mb-4">
                 <Title size="md">{title}</Title>
                 <Link

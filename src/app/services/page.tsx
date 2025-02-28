@@ -22,7 +22,10 @@ export default async function Services() {
     return (
         <>
             <Header />
-            <div className="max-w-[1200px] m-auto flex">
+            <div
+                className="max-w-[1300px] m-auto flex px-4 lg:px-0"
+                id="services "
+            >
                 <div className="w-2/3">
                     <Title size="2xl">{servicesHeaders.services.title}</Title>
                     <p className="">{servicesHeaders.services.subtitle}</p>
@@ -33,7 +36,7 @@ export default async function Services() {
             </div>
 
             <ServicesGrid />
-            <div className="max-w-[1200px] m-auto flex mt-16">
+            <div className="max-w-[1300px] m-auto flex mt-16 px-4 lg:px-0">
                 <div className="w-2/3">
                     <Title size="2xl">{servicesHeaders.reviews.title}</Title>
                     <p className="">{servicesHeaders.reviews.subtitle}</p>

@@ -10,15 +10,21 @@ export default async function VideoGrid({
 }: {
     videoCategory?: string;
 }) {
-    const videos = await fetchContentType("videos", "populate=*", false, 100);
+    const videos = await fetchContentType(
+        "videos",
+        "sort[0]=popularity:desc&populate=*",
+        false,
+        100
+    );
     console.log(videoCategory);
     return (
         <>
-            <div className="max-w-[1200px] m-auto flex flex-col lg:flex-row mt-8">
+            <div className="max-w-[1300px] m-auto flex flex-col lg:flex-row mt-8 px-4 lg:px-0 relative">
                 <CategoriesColumn
                     category="video"
                     activeCategory={videoCategory}
                 />
+
                 <div className="grid-cols-1 lg:grid-cols-3 w-full lg:w-3/4 grid gap-4">
                     {videos.data
                         .filter(

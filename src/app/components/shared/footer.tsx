@@ -17,12 +17,13 @@ const footerData = await getFooterData();
 
 export function Footer() {
     return (
-        <div
-            className="bg-bgheader mt-16 py-8 flex flex-col items-center justify-center font-semibold"
-            style={{ backgroundImage: "url('/dots black 20.png')" }}
-        >
-            {/* Top section - logo, nav, buttons */}
-            <div className="w-[1200px] border-[#BEB7AE] border-b-[1px] py-8 flex items-start justify-between">
+        <div className="bg-bgheader mt-16 py-8 flex flex-col items-center justify-center font-semibold relative">
+            {/* Фоновое изображение */}
+            <div className="absolute inset-0 bg-[url('/dots.png')] dark:opacity-20"></div>
+
+            {/* Верхний блок (лого, навигация, кнопки) */}
+            <div className="w-full max-w-[1300px] border-[#BEB7AE] border-b-[1px] py-8 flex flex-wrap items-center justify-between relative gap-6 px-4 md:px-8">
+                {/* Логотип */}
                 <Image
                     src={strapiImage(footerData.footer.logo.url)}
                     className="w-[133px] dark-invert"
@@ -31,14 +32,23 @@ export function Footer() {
                     height={50}
                 />
 
-                {footerData.navigation.navigation_items.map(
-                    (nav_item: NavigationItem) => (
-                        <a href={`/${nav_item.slug}`} key={nav_item.id}>
-                            {nav_item.title}
-                        </a>
-                    )
-                )}
-                <div className="flex flex-col gap-4">
+                {/* Навигация */}
+                <nav className="flex flex-wrap gap-4 md:gap-8 sm:flex-col">
+                    {footerData.navigation.navigation_items.map(
+                        (nav_item: NavigationItem) => (
+                            <a
+                                href={`/${nav_item.slug}`}
+                                key={nav_item.id}
+                                className="h-14 flex items-center"
+                            >
+                                {nav_item.title}
+                            </a>
+                        )
+                    )}
+                </nav>
+
+                {/* Кнопки */}
+                <div className="flex flex-col md:flex-row gap-4">
                     {footerData.footer.button.map((button) => (
                         <ActionButton
                             label={button.text}
@@ -50,19 +60,27 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className="flex w-[1200px] justify-between py-8">
+            {/* Средний блок (дополнительная информация) */}
+            <div className="flex flex-wrap w-full max-w-[1300px] justify-between py-8 font-normal gap-4 px-4 md:px-8">
                 {footerData.footer.line[0].item.map((line) =>
                     line.link ? (
-                        <a href={line.link} key={line.id}>
+                        <a
+                            href={line.link}
+                            key={line.id}
+                            className="whitespace-nowrap"
+                        >
                             {line.text}
                         </a>
                     ) : (
-                        <p key={line.id}>{line.text}</p>
+                        <p key={line.id} className="whitespace-nowrap">
+                            {line.text}
+                        </p>
                     )
                 )}
             </div>
 
-            <p className="text-fadedText">
+            {/* Нижний блок (копирайт) */}
+            <p className="text-fadedText px-4 text-center">
                 © 2024 — {new Date().getFullYear()} Sims 4 Helper
             </p>
         </div>

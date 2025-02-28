@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
 import { Footer } from "./components/shared/footer";
 
@@ -7,6 +7,12 @@ const montserrat = Montserrat({
     subsets: ["cyrillic"],
     display: "swap",
     variable: "--font-montserrat",
+});
+
+const montserratAlt = Montserrat_Alternates({
+    subsets: ["latin"],
+    weight: ["400", "700"], // Можно выбрать нужные веса
+    variable: "--font-montserrat-alt", // Создаём CSS-переменную
 });
 
 export const metadata: Metadata = {
@@ -21,7 +27,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru" className={montserrat.variable}>
+        <html
+            lang="ru"
+            className={`${montserrat.variable} ${montserratAlt.variable}`}
+        >
             <link rel="icon" href="/favicon.png" sizes="any" />
 
             <body

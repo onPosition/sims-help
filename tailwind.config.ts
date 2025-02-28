@@ -15,6 +15,12 @@ const config: Config = {
             fontFamily: {
                 sans: ["var(--font-montserrat)"],
             },
+            fontSize: {
+                h1: ["55px", "65px"],
+                h2: ["24px", "32px"],
+                h3: ["20px", "28px"],
+                body: ["16px", "24px"],
+            },
             // cursor: {
             //     default:
             //         "url(https://play.tailwindcss.com/favicons/favicon-16x16.png?v=3), default",
@@ -29,6 +35,7 @@ const config: Config = {
             post: "var(--post)",
             bgheader: "var(--bg-header)",
             btnprimary: "var(--btn-primary)",
+            postcard: "var(--postcard)",
         },
         screens: {
             sm: "380px",

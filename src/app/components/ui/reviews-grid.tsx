@@ -1,22 +1,97 @@
-import fetchContentType from "@/lib/fetchContentType";
-import { strapiImage } from "@/lib/strapiImage";
-import Image from "next/image";
-import Link from "next/link";
-import { Service } from "../../../../types/types";
+"use client";
 
-export default async function ReviewsGrid() {
-    const reviews = await fetchContentType("reviews", "");
-    console.log(reviews);
+import { useState, useEffect } from "react";
+import fetchContentType from "@/lib/fetchContentType";
+import { readableDate } from "@/lib/readableDate";
+import Image from "next/image";
+import Button from "./button";
+
+interface Review {
+    id: number;
+    name: string;
+    date: string;
+    stars: "five" | "four" | "three";
+    text: string;
+}
+
+interface ReviewsGridProps {
+    reviews?: Review[] | null;
+}
+
+export default function ReviewsGrid({
+    reviews: propReviews,
+}: ReviewsGridProps) {
+    const [reviews, setReviews] = useState<Review[]>(propReviews || []);
+    const [visibleCount, setVisibleCount] = useState(5); // Количество видимых отзывов
+    const [loading, setLoading] = useState(!propReviews);
+
+    useEffect(() => {
+        if (!propReviews) {
+            async function loadReviews() {
+                const fetchedReviews = await fetchContentType(
+                    "reviews",
+                    "sort[0]=date:desc"
+                );
+                setReviews(fetchedReviews.data);
+                setLoading(false);
+            }
+            loadReviews();
+        }
+    }, [propReviews]);
+
+    console.log(propReviews);
+
+    const showMoreReviews = () => {
+        setVisibleCount((prev) => prev + 5); // Загружаем еще 5 отзывов
+    };
+
+    if (loading) return <p className="text-center">Загрузка отзывов...</p>;
+
     return (
-        <div className="flex mt-8 max-w-[1200px] m-auto">
-            <div className="grid grid-rows-auto lg:grid-cols-3  w-full gap-4">
-                {reviews.data.map((review: any) => (
-                    <div className="p-4 bg-bgheader rounded-3xl">
-                        <p className="font-bold">{review.name}</p>
+        <div className="flex flex-col mt-8 max-w-[1300px] m-auto mb-16">
+            <div className="reviews-grid w-full h-fit">
+                {reviews.slice(0, visibleCount).map((review) => (
+                    <div
+                        className="p-4 lg:p-8 bg-bgheader rounded-3xl mb-4 last-of-type:mb-0"
+                        key={review.id}
+                    >
+                        <div className="flex justify-between mb-1 items-center">
+                            <p className="font-bold text-xl">{review.name}</p>
+                            <p className="italic">
+                                {readableDate(review.date)}
+                            </p>
+                        </div>
+                        <div className="flex space-x-1 mb-2">
+                            {Array.from({
+                                length:
+                                    review.stars === "five"
+                                        ? 5
+                                        : review.stars === "four"
+                                        ? 4
+                                        : 3,
+                            }).map((_, i) => (
+                                <Image
+                                    key={i}
+                                    src="/star.png"
+                                    alt="Звезда"
+                                    width={24}
+                                    height={24}
+                                />
+                            ))}
+                        </div>
                         <p>{review.text}</p>
                     </div>
                 ))}
             </div>
+
+            {/* Кнопка "Показать ещё" */}
+            {visibleCount < reviews.length && (
+                <Button
+                    text="Показать ещё"
+                    handleClick={showMoreReviews}
+                    className="w-fit m-auto"
+                />
+            )}
         </div>
     );
 }

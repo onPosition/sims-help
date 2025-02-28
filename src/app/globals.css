@@ -64,6 +64,7 @@ ol {
     --post: #f2f2f2;
     --bg-header: #ebe6e0;
     --btn-primary: #4b46ea;
+    --postcard: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +78,7 @@ ol {
         --card: #413c3c;
         --post: #393838;
         --bg-header: #2c2626;
+        --postcard: #2c2626;
     }
     .dark-invert {
         filter: invert(1);
@@ -103,4 +105,22 @@ input:active {
 }
 .mirrored {
     transform: scaleX(-1) rotate(90deg);
+}
+.font-alt {
+    font-family: var(--font-montserrat-alt);
+}
+
+.reviews-grid {
+    /* column-count: 3;
+    column-gap: 45px; */
+}
+.review {
+    /* break-inside: avoid;
+    margin-bottom: 20px; */
+}
+.sticky-cat {
+    @media (max-width: 768px) {
+        background: none;
+        backdrop-filter: blur(25px) saturate(25%) brightness(90%);
+    }
 }

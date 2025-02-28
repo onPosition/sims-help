@@ -8,15 +8,16 @@ const page: React.FC = () => {
         <div className="page-content">
             <Header />
 
-            <div className="max-w-[1200px] m-auto">
+            <div className="max-w-[1300px] m-auto ">
                 <ArticlesRow title="Последние статьи" sortBy="updatedAt" />
-                <ArticlesRow
+                <ArticlesRow title="Популярные статьи" sortBy="popularity" />
+                {/* <ArticlesRow
                     relatedAtricles={[
                         "spektr-nastroenij-ot-lumpinou",
                         "kak-privesti-v-poryadok-papku-mods",
                     ]}
                     title="Популярные статьи"
-                />
+                /> */}
                 <div className="flex justify-center mb-16">
                     <Link href={"/blog#posts"}>
                         <Button text="Показать все" disabled={true} />

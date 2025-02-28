@@ -46,6 +46,11 @@ export interface Service {
     id: string;
     createdAt: string;
     updatedAt: string;
+    hero: { title: string; subtitle: string; image: { url: string } };
+    about: { title: string; text: [] };
+    price: { title: string; text: [] };
+    relates_services: { services: [] };
+    reviews: [];
 }
 export interface GlobalData {
     footer: any;

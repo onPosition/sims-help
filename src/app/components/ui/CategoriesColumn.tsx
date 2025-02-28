@@ -15,7 +15,7 @@ export async function CategoriesColumn({
     const categories = await fetchContentType(`${category}-categories`, "");
 
     return (
-        <div className=" w-full lg:w-1/4 mb-8 lg:mb-0">
+        <div className=" w-full lg:w-1/4 h-fit mb-8 sticky top-0 lg:top-28 sticky-cat z-10 bg-background py-4 lg:p-0">
             <ul className="flex flex-col">
                 <li style={{ order: 0 }}>
                     <Link
@@ -23,6 +23,7 @@ export async function CategoriesColumn({
                         className={`before:content-['—'] before:mr-4 hover:text-maincolor font-bold ${
                             !activeCategory && "text-maincolor"
                         }`}
+                        scroll={false}
                     >
                         Все категории
                     </Link>{" "}

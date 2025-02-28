@@ -12,9 +12,12 @@ export const metadata: Metadata = {
 
 const videos: React.FC = () => {
     return (
-        <div>
+        <div className="">
             <Header />
-            <div className="flex flex-col max-w-[1200px] m-auto gap-2 lg:gap-0 lg:flex-row justify-between items-center">
+            <div
+                className="flex lg:sticky py-4 z-20 bg-background flex-col  top-0 z-100  max-w-[1300px] m-auto gap-2 lg:gap-0 lg:flex-row justify-between items-center px-4 lg:px-0"
+                id="video"
+            >
                 <Title size="2xl">Видео туториалы</Title>
                 <SearchInput defaultValue="" category="videos" />
             </div>

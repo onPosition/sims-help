@@ -19,12 +19,12 @@ export const PostCard: React.FC<postCardProps> = ({
     type,
 }) => {
     return (
-        <div className="shadow-lg bg-card p-4 min-h-[300px]  rounded-xl flex flex-col items-center justify-between">
+        <div className="shadow-lg bg-postcard p-4  h-full rounded-xl flex flex-col items-center justify-between">
             <div className="w-full h-3/4 mb-2">
                 <div
                     className={`
                         w-full
-                        ${type === "post" ? "aspect-[3/2]" : "aspect-video"}
+aspect-video
                         relative
                         mb-4
                         overflow-hidden
@@ -52,7 +52,7 @@ export const PostCard: React.FC<postCardProps> = ({
                 </div>
                 <p className="font-bold">{title}</p>
             </div>
-            {type !== "service" && <PostMetadata date={date} views={views} />}
+            {/* {type !== "service" && <PostMetadata date={date} views={views} />} */}
         </div>
     );
 };

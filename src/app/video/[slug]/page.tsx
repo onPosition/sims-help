@@ -5,6 +5,7 @@ import { Params, Video } from "../../../../types/types";
 import splitYoutubeUrl from "@/lib/splitYoutubeId";
 import PostMetadata from "@/app/components/ui/post-metadata";
 import BackButton from "@/app/components/ui/back-button";
+import Header from "@/app/components/shared/header";
 
 async function getVideo({ params }: { params: Params }) {
     const slug = (await params).slug;
@@ -39,8 +40,8 @@ export default async function Page({
 
     return (
         <>
-            <div className=" max-w-[1200px] m-auto mt-16">
-                <BackButton />
+            <div className=" max-w-[1300px] m-auto px-4 lg:px-0">
+                <Header navOnly={true} />
                 <Title size="2xl" className="text-center my-8">
                     {video.title}
                 </Title>

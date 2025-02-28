@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent } from "react";
 import Button from "../ui/button";
+import Image from "next/image";
 
 interface iDefault {
     defaultValue: string | null;
@@ -51,7 +52,7 @@ export const SearchInput = ({
     return (
         <div
             className={cn(
-                "flex gap-1 w-full lg:w-fit",
+                "flex gap-1 w-full lg:w-fit h-fit",
                 showButton && "lg:w-full"
             )}
         >
@@ -62,7 +63,13 @@ export const SearchInput = ({
                 )}
             >
                 <label htmlFor="inputId" className="">
-                    🔍
+                    <Image
+                        src="/search.png"
+                        alt="search icon"
+                        width={25}
+                        height={25}
+                        className="dark-invert"
+                    />
                 </label>
 
                 <input

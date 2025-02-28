@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: Params }) {
     console.log(relatedAtricles);
 
     return (
-        <div className="max-w-[1200px] m-auto">
+        <div className="max-w-[1300px] m-auto px-4 lg:px-0">
             <Header navOnly={true} />
             <article className="mt-16">
                 <Title size="2xl" className="text-center my-8">
@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: Params }) {
                 </Title>
                 <PostMetadata date={article.createdAt} views={0} />
 
-                <div className="bg-post mt-8 p-8 lg:p-16 rounded-3xl mb-16 post-article">
+                <div className="bg-post mt-8 p-4 lg:p-16 rounded-3xl mb-16 post-article">
                     {/* <BlocksRenderer content={article.text} /> */}
                     <BlockRendererClient content={article.text} />
                 </div>

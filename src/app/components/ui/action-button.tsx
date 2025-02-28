@@ -8,6 +8,7 @@ interface ButtonProps {
     icon?: string;
     onClick?: () => void;
     link?: string;
+    localImage?: boolean;
 }
 
 const ActionButton: React.FC<ButtonProps> = ({
@@ -15,19 +16,20 @@ const ActionButton: React.FC<ButtonProps> = ({
     type,
     icon,
     onClick,
+    localImage,
 }) => {
     const types = {
-        primary: "bg-btnprimary hover:bg-[#000] text-text",
+        primary: "bg-btnprimary hover:bg-[#000] text-[#fff]",
         secondary: "bg-[white] hover:bg-red-600 text-[#000]",
     };
 
     return (
         <button
-            className={`flex items-center gap-4 px-6 h-14 rounded-lg font-semibold transition ${types[type]}`}
+            className={`flex items-center gap-4  px-6 max-w-[300px] h-14 rounded-lg font-semibold transition ${types[type]}`}
             onClick={onClick}
         >
             <Image
-                src={strapiImage(icon)}
+                src={localImage ? icon : strapiImage(icon)}
                 className="w-7 h-auto"
                 alt="logo"
                 width={133}
