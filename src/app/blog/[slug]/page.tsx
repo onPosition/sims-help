@@ -7,13 +7,14 @@ import PostMetadata from "@/app/components/ui/post-metadata";
 import BlockRendererClient from "@/app/components/ui/block-renderer-client";
 import Banner from "@/app/components/ui/banner";
 import Header from "@/app/components/shared/header";
+import NotFound from "@/app/components/shared/not-found";
 
 async function getPost({ params }: { params: Params }) {
     const slug = (await params).slug;
 
     const article: Article = await fetchContentType(
         "posts",
-        `filters[slug]=${slug}&populate=*`,
+        `filters[slug]=${slug}&populate[0]=dynamic_zone&populate[1]=post_category&populate[3]=seo.openGraph`,
         true
     );
     return article;
@@ -43,18 +44,37 @@ async function getRelatedArticles({ params }: { params: Params }) {
 
 export async function generateMetadata({ params }) {
     const article = await getPost({ params });
-    if (article)
-        return {
-            title: `${article.title} | Sims Blog`,
-        };
-    return;
+
+    if (!article) return;
+
+    return {
+        title: article.seo?.metaTitle || `${article.title} | Sims4Helper`,
+        description: article.seo?.metaDescription || "",
+        keywords: article.seo?.keywords,
+        openGraph: {
+            title:
+                article.seo?.["og:title"] || `${article.title} | Sims4Helper`,
+            description: article.seo?.["og:description"] || "",
+            url: article.seo?.["og:url"] || "",
+            type: "article",
+            images: article.seo?.["og:image"]
+                ? [{ url: article.seo["og:image"] }]
+                : [],
+        },
+    };
 }
 
 export default async function Page({ params }: { params: Params }) {
     const article = await getPost({ params });
 
     if (!article) {
-        return <h1>404</h1>;
+        return (
+            <>
+                {" "}
+                <Header navOnly={true} />
+                <NotFound />
+            </>
+        );
     }
 
     const ctaObject = article.dynamic_zone?.find(
@@ -64,7 +84,7 @@ export default async function Page({ params }: { params: Params }) {
     const serviceInfo = await getServiceInfo({ params });
 
     const relatedAtricles = await getRelatedArticles({ params });
-    console.log(relatedAtricles);
+    console.log(article);
 
     return (
         <div className="max-w-[1300px] m-auto px-4 lg:px-0">

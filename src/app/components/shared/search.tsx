@@ -34,9 +34,13 @@ export const SearchInput = ({
 
     const handleSearch = () => {
         if (inputValue && category === "blog")
-            return router.push(`/search/?q=${inputValue}&category=posts`);
+            return router.push(
+                `/search/?q=${inputValue}&category=posts#search`
+            );
         if (inputValue && category === "videos")
-            return router.push(`/search/?q=${inputValue}&category=videos`);
+            return router.push(
+                `/search/?q=${inputValue}&category=videos#search`
+            );
         if (inputValue && category === "website")
             return router.push(`search/?q=${inputValue}&category=all`);
 

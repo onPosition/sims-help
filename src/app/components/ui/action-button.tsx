@@ -25,16 +25,18 @@ const ActionButton: React.FC<ButtonProps> = ({
 
     return (
         <button
-            className={`flex items-center gap-4  px-6 max-w-[300px] h-14 rounded-lg font-semibold transition ${types[type]}`}
+            className={`flex items-center gap-4 px-6 max-w-[300px] h-14 rounded-lg font-semibold transition ${types[type]}`}
             onClick={onClick}
         >
-            <Image
-                src={localImage ? icon : strapiImage(icon)}
-                className="w-7 h-auto"
-                alt="logo"
-                width={133}
-                height={50}
-            />
+            {icon && (
+                <Image
+                    src={localImage ? icon : strapiImage(icon)}
+                    className="w-7 h-auto"
+                    alt="logo"
+                    width={133}
+                    height={50}
+                />
+            )}
             {label}
         </button>
     );

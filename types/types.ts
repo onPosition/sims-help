@@ -26,6 +26,7 @@ export interface Article {
     youtube_id: string;
     title: string;
     dynamic_zone: any[];
+    seo: { metaTitle: string; metaDescription: string; keywords: string };
 }
 
 export interface Video {

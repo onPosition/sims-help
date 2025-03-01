@@ -4,7 +4,6 @@ import fetchContentType from "@/lib/fetchContentType";
 import { Params, Video } from "../../../../types/types";
 import splitYoutubeUrl from "@/lib/splitYoutubeId";
 import PostMetadata from "@/app/components/ui/post-metadata";
-import BackButton from "@/app/components/ui/back-button";
 import Header from "@/app/components/shared/header";
 
 async function getVideo({ params }: { params: Params }) {

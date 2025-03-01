@@ -1,6 +1,5 @@
 import fetchContentType from "@/lib/fetchContentType";
 import { Article } from "../../../../types/types";
-import PostCard from "./postCard";
 import { Title } from "./title";
 import Link from "next/link";
 import Image from "next/image";
@@ -20,7 +19,6 @@ export async function RelatedServices({
     title,
     sortBy,
     filters,
-    id,
     relatedServices,
 }: ArticlesRowProps) {
     let posts = null;

@@ -39,8 +39,6 @@ export default function ReviewsGrid({
         }
     }, [propReviews]);
 
-    console.log(propReviews);
-
     const showMoreReviews = () => {
         setVisibleCount((prev) => prev + 5); // Загружаем еще 5 отзывов
     };
@@ -48,11 +46,11 @@ export default function ReviewsGrid({
     if (loading) return <p className="text-center">Загрузка отзывов...</p>;
 
     return (
-        <div className="flex flex-col mt-8 max-w-[1300px] m-auto mb-16">
+        <div className="flex flex-col mt-8 max-w-[1300px] m-auto mb-16 px-4 lg:px-0">
             <div className="reviews-grid w-full h-fit">
                 {reviews.slice(0, visibleCount).map((review) => (
                     <div
-                        className="p-4 lg:p-8 bg-bgheader rounded-3xl mb-4 last-of-type:mb-0"
+                        className="p-4 lg:p-8 bg-card rounded-3xl mb-4 last-of-type:mb-0"
                         key={review.id}
                     >
                         <div className="flex justify-between mb-1 items-center">
@@ -89,7 +87,7 @@ export default function ReviewsGrid({
                 <Button
                     text="Показать ещё"
                     handleClick={showMoreReviews}
-                    className="w-fit m-auto"
+                    className="w-fit m-auto mt-4"
                 />
             )}
         </div>

@@ -59,7 +59,7 @@ export default async function Page(props: { params: Params }) {
                         <ActionButton
                             label="Написать в бот помощи"
                             type="primary"
-                            icon="/sims.png"
+                            icon="/tg.png"
                             localImage={true}
                         />
                     </div>

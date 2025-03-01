@@ -16,13 +16,14 @@ async function getFooterData() {
 const footerData = await getFooterData();
 
 export function Footer() {
+    console.log(footerData);
     return (
         <div className="bg-bgheader mt-16 py-8 flex flex-col items-center justify-center font-semibold relative">
             {/* Фоновое изображение */}
-            <div className="absolute inset-0 bg-[url('/dots.png')] dark:opacity-20"></div>
+            <div className="absolute inset-0 bg-[url('/dots.png')] dark:opacity-20 z-0"></div>
 
             {/* Верхний блок (лого, навигация, кнопки) */}
-            <div className="w-full max-w-[1300px] border-[#BEB7AE] border-b-[1px] py-8 flex flex-wrap items-center justify-between relative gap-6 px-4 md:px-8">
+            <div className="w-full max-w-[1300px] border-[#BEB7AE] border-b-[1px] py-8 flex flex-wrap items-start justify-between relative gap-6 px-4 md:px-8">
                 {/* Логотип */}
                 <Image
                     src={strapiImage(footerData.footer.logo.url)}
@@ -33,7 +34,7 @@ export function Footer() {
                 />
 
                 {/* Навигация */}
-                <nav className="flex flex-wrap gap-4 md:gap-8 sm:flex-col">
+                <nav className="flex flex-wrap gap-4 md:gap-8 flex-col lg:flex-row">
                     {footerData.navigation.navigation_items.map(
                         (nav_item: NavigationItem) => (
                             <a
@@ -48,7 +49,7 @@ export function Footer() {
                 </nav>
 
                 {/* Кнопки */}
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col gap-4">
                     {footerData.footer.button.map((button) => (
                         <ActionButton
                             label={button.text}
@@ -61,7 +62,7 @@ export function Footer() {
             </div>
 
             {/* Средний блок (дополнительная информация) */}
-            <div className="flex flex-wrap w-full max-w-[1300px] justify-between py-8 font-normal gap-4 px-4 md:px-8">
+            <div className="flex flex-wrap w-full max-w-[1300px] z-10 justify-between py-8 font-normal gap-4 px-4 md:px-8">
                 {footerData.footer.line[0].item.map((line) =>
                     line.link ? (
                         <a
@@ -81,7 +82,7 @@ export function Footer() {
 
             {/* Нижний блок (копирайт) */}
             <p className="text-fadedText px-4 text-center">
-                © 2024 — {new Date().getFullYear()} Sims 4 Helper
+                © 2024 — {new Date().getFullYear()} The Sims 4 Helper
             </p>
         </div>
     );

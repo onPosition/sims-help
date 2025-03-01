@@ -14,8 +14,8 @@ const Page = () => {
         <div>
             <Header />
             <div
-                id="posts"
-                className="flex max-w-[1300px] sticky top-0 z-20 bg-background m-auto flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center px-4 lg:px-0 py-4"
+                id="blog"
+                className="flex lg:sticky max-w-[1300px] top-0 z-20 bg-background m-auto flex-col gap-2 lg:gap-0 lg:flex-row justify-between items-center px-4 lg:px-0 py-4"
             >
                 <Title size="2xl">Статьи по Sims</Title>
                 <SearchInput defaultValue="" category="blog" />

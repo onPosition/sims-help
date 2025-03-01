@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import "./globals.css";
 import { Footer } from "./components/shared/footer";
+import ScrollToTop from "./components/shared/scroll-to-top";
 
 const montserrat = Montserrat({
     subsets: ["cyrillic"],
@@ -42,6 +43,7 @@ export default function RootLayout({
             >
                 {children}
                 <Footer />
+                <ScrollToTop />
             </body>
         </html>
     );

@@ -121,6 +121,6 @@ input:active {
 .sticky-cat {
     @media (max-width: 768px) {
         background: none;
-        backdrop-filter: blur(25px) saturate(25%) brightness(90%);
+        backdrop-filter: blur(25px) saturate(25%);
     }
 }

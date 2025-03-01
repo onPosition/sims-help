@@ -1,7 +1,6 @@
 import { strapiImage } from "@/lib/strapiImage";
 import React from "react";
 import Image from "next/image";
-import PostMetadata from "./post-metadata";
 
 interface postCardProps {
     title: string;
@@ -14,9 +13,6 @@ interface postCardProps {
 export const PostCard: React.FC<postCardProps> = ({
     title,
     cover,
-    date,
-    views,
-    type,
 }) => {
     return (
         <div className="shadow-lg bg-postcard p-4  h-full rounded-xl flex flex-col items-center justify-between">

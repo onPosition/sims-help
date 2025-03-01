@@ -19,7 +19,7 @@ export const Title: React.FC<Props> = ({
         sm: "h4",
         md: "h3",
         lg: "h2",
-        xl: "h1",
+        xl: "h6",
         "2xl": "h1",
     } as const;
 
@@ -29,7 +29,7 @@ export const Title: React.FC<Props> = ({
         md: "text-[20px] lg:text-[30px] ys-text",
         lg: "text-[32px] ys-display",
         xl: "text-[40px] ys-display",
-        "2xl": "text-[32px] lg:text-[48px] ys-display",
+        "2xl": "text-[28px] lg:text-[48px] font-bold ys-display",
     } as const;
 
     return React.createElement(
